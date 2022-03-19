@@ -8,7 +8,7 @@ import app.atomofiron.recyclerview.utils.GenericViewHolder
 
 class StringViewHolder(itemView: View) : GenericViewHolder(itemView) {
 
-    private val viewBinding = ItemStringBinding.bind(itemView)
+    val viewBinding = ItemStringBinding.bind(itemView)
 
     init {
         itemView.setOnClickListener {

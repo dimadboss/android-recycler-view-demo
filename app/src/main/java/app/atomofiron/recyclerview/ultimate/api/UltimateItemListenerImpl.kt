@@ -14,12 +14,14 @@ class UltimateItemListenerImpl(
 ) : UltimateItemListener {
 
     override fun onItemClick(index: Int, item: DataItem) {
-        val replacement = when (item) {
+        /*val replacement = when (item) {
             is StringItem -> UltimateDataFactory.createPicture(index)
             is PictureItem -> UltimateDataFactory.createCard(index)
             is CardItem -> UltimateDataFactory.createString(index)
             else -> throw IllegalArgumentException()
-        }
+        }*/
+        val stringItem = item as StringItem
+        val replacement = StringItem(stringItem.string, !stringItem.checked)
         adapter.replaceItem(index, replacement)
     }
 }

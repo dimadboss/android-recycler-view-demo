@@ -1,6 +1,7 @@
 package app.atomofiron.recyclerview.ultimate
 
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import app.atomofiron.recyclerview.ultimate.api.UltimateItemListener
 import app.atomofiron.recyclerview.ultimate.data.CardItem
@@ -8,9 +9,11 @@ import app.atomofiron.recyclerview.ultimate.data.PictureItem
 import app.atomofiron.recyclerview.ultimate.data.StringItem
 import app.atomofiron.recyclerview.ultimate.delegate.DataItemsDelegate
 import app.atomofiron.recyclerview.ultimate.delegate.DataItemsDelegateImpl
+import app.atomofiron.recyclerview.ultimate.holder.StringViewHolder
 import app.atomofiron.recyclerview.ultimate.utils.UltimateViewHolderFactory
 import app.atomofiron.recyclerview.utils.GenericViewHolder
 import java.lang.Exception
+import kotlin.coroutines.coroutineContext
 
 class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDelegate by DataItemsDelegateImpl() {
 
@@ -39,6 +42,12 @@ class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDele
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder {
         val holder = UltimateViewHolderFactory.values()[viewType].createHolder(parent)
         holder.itemView.setOnClickListener {
+            val position = holder.bindingAdapterPosition
+            if (position != -1) {
+                itemListener?.onItemClick(position, items[position])
+            }
+        }
+        (holder as StringViewHolder).viewBinding.itemString.setOnClickListener {
             val position = holder.bindingAdapterPosition
             if (position != -1) {
                 itemListener?.onItemClick(position, items[position])

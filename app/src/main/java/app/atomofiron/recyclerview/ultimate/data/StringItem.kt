@@ -7,7 +7,7 @@ class StringItem(
     val checked: Boolean,
 ) : DataItem {
 
-    override val id: Long = (string.hashCode() + checked.hashCode()).toLong()
+    override val id: Long = (string.hashCode() xor (if (checked) 1151 else 7829)).toLong()
 
     override fun areContentsTheSame(other: DataItem): Boolean {
         // принцип такой же, как в equals()
