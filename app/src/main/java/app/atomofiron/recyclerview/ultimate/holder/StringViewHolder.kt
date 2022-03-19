@@ -18,5 +18,6 @@ class StringViewHolder(itemView: View) : GenericViewHolder(itemView) {
     override fun bind(data: DataItem) {
         data as StringItem
         viewBinding.itemString.text = data.string
+        viewBinding.itemString.isChecked = data.checked
     }
 }

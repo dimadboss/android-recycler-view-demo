@@ -11,7 +11,7 @@ import app.atomofiron.recyclerview.utils.RandomFactory
 class UltimateDataFactory {
     companion object {
 
-        fun createString(index: Int): StringItem = StringItem("Item $index")
+        fun createString(index: Int): StringItem = StringItem("Item $index", true)
 
         fun createPicture(index: Int): PictureItem = PictureItem(index, randomColor())
 
