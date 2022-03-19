@@ -41,12 +41,6 @@ class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDele
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder {
         val holder = UltimateViewHolderFactory.values()[viewType].createHolder(parent)
-        holder.itemView.setOnClickListener {
-            val position = holder.bindingAdapterPosition
-            if (position != -1) {
-                itemListener?.onItemClick(position, items[position])
-            }
-        }
         (holder as StringViewHolder).viewBinding.itemString.setOnClickListener {
             val position = holder.bindingAdapterPosition
             if (position != -1) {
