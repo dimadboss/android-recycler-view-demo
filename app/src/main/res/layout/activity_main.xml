@@ -24,17 +24,8 @@
             app:menu="@menu/toobar"
             />
     </com.google.android.material.appbar.AppBarLayout>
-    <ListView
-        android:id="@+id/main_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/common_margin"
-        android:clipToPadding="false"
-        android:dividerHeight="@dimen/common_margin"
-        android:divider="@null"
-        android:scrollbars="none"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recycler"
         android:layout_width="match_parent"

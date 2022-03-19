@@ -1,9 +1,11 @@
 package app.atomofiron.recyclerview
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -48,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         switchList()
 
         subscribeToData()
+
+        Toast.makeText(this@MainActivity, "To remove item please use long tap", Toast.LENGTH_LONG).show()
     }
 
     private fun subscribeToData() {
@@ -76,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun switchList() {
         viewBinding.mainRecycler.isVisible = true
-        viewBinding.mainList.isVisible = false
+        //viewBinding.mainList.isVisible = false
         viewBinding.mainRecycler.clearItemDecorations()
         when (listType) {
             ListType.ULTIMATE -> toUltimateList()
@@ -92,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val recyclerView = viewBinding.mainRecycler
-        val listView = viewBinding.mainList
+        //val listView = viewBinding.mainList
         ViewCompat.setOnApplyWindowInsetsListener(viewBinding.root) { _, insets ->
             val cat = recyclerView.resources.getDimensionPixelSize(R.dimen.cat_part)
             val padding = when (listType) {
@@ -100,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             }
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             recyclerView.updatePaddingRelative(top = padding, bottom = systemBars.bottom + padding)
-            listView.updatePaddingRelative(top = padding, bottom = systemBars.bottom + padding)
+            //listView.updatePaddingRelative(top = padding, bottom = systemBars.bottom + padding)
             insets
         }
     }
