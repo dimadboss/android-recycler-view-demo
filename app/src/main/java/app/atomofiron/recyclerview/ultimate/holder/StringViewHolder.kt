@@ -10,6 +10,7 @@ class StringViewHolder(itemView: View) : GenericViewHolder(itemView) {
 
     val viewBinding = ItemStringBinding.bind(itemView)
 
+
     init {
         itemView.setOnClickListener {
         }

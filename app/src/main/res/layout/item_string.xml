@@ -6,7 +6,7 @@
 
     <CheckedTextView
         android:id="@+id/item_string"
-        android:layout_width="330dp"
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="18dp"
@@ -17,20 +17,6 @@
         android:gravity="center_vertical"
         android:padding="8dp"
         android:textSize="18sp"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_weight="1"
-        android:width="90dip"
-        android:maxHeight="38dp"
-        android:minWidth="90dip"
-        android:minHeight="38dp"
-        android:padding="0dip"
-        android:text="X"
         tools:ignore="TouchTargetSizeCheck" />
 
 </LinearLayout>

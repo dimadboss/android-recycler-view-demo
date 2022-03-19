@@ -1,7 +1,8 @@
 package app.atomofiron.recyclerview.ultimate
 
+
 import android.view.ViewGroup
-import android.widget.Toast
+
 import androidx.recyclerview.widget.RecyclerView
 import app.atomofiron.recyclerview.ultimate.api.UltimateItemListener
 import app.atomofiron.recyclerview.ultimate.data.CardItem
@@ -13,7 +14,6 @@ import app.atomofiron.recyclerview.ultimate.holder.StringViewHolder
 import app.atomofiron.recyclerview.ultimate.utils.UltimateViewHolderFactory
 import app.atomofiron.recyclerview.utils.GenericViewHolder
 import java.lang.Exception
-import kotlin.coroutines.coroutineContext
 
 class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDelegate by DataItemsDelegateImpl() {
 
@@ -47,6 +47,15 @@ class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDele
                 itemListener?.onItemClick(position, items[position])
             }
         }
+
+        holder.viewBinding.itemString.setOnLongClickListener {
+            val position = holder.bindingAdapterPosition
+            if (position != -1) {
+                itemListener?.onRemoveClick(position)
+            }
+            true
+        }
+
         return holder
     }
 
