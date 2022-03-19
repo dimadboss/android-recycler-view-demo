@@ -7,8 +7,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.atomofiron.recyclerview.databinding.ActivityMainBinding
 import app.atomofiron.recyclerview.ultimate.UltimateAdapter
 import app.atomofiron.recyclerview.ultimate.api.UltimateItemListenerImpl
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.mainRecycler.run {
             addItemDecoration(CatDecoration(context))
             itemAnimator = ultimateItemAnimator
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = LinearLayoutManager(context)//StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
             val adapter = UltimateAdapter()
             adapter.setListener(UltimateItemListenerImpl(adapter))

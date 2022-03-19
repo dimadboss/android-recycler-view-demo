@@ -31,15 +31,6 @@ class UltimateDataFactory {
     fun getItems(): MutableList<DataItem> = (0..20).map { next(it) }.toMutableList()
 
     private fun next(index: Int): DataItem {
-        /*when {
-            index == 2 -> return createCard(2)
-            index == 3 -> return PictureItem(index, randomColor())
-            index == 4 -> return createCard(4)
-        }*/
-        return when (itemsFactory.next()) {
-            UltimateViewHolderFactory.CARD -> createCard(index)
-            UltimateViewHolderFactory.PICTURE -> createPicture(index)
-            UltimateViewHolderFactory.STRING -> createString(index)
-        }
+        return createString(index)
     }
 }
