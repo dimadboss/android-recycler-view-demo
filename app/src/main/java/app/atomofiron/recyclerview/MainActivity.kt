@@ -1,10 +1,11 @@
 package app.atomofiron.recyclerview
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
@@ -14,8 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import app.atomofiron.recyclerview.databinding.ActivityMainBinding
 import app.atomofiron.recyclerview.ultimate.UltimateAdapter
 import app.atomofiron.recyclerview.ultimate.api.UltimateItemListenerImpl
+import app.atomofiron.recyclerview.ultimate.data.StringItem
 import app.atomofiron.recyclerview.ultimate.utils.CatDecoration
 import app.atomofiron.recyclerview.ultimate.utils.UltimateItemAnimator
+import app.atomofiron.recyclerview.utils.DataItem
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,7 +55,11 @@ class MainActivity : AppCompatActivity() {
 
         subscribeToData()
 
-        Toast.makeText(this@MainActivity, "To remove item please use long tap", Toast.LENGTH_LONG).show()
+
+
+
+        Toast.makeText(this@MainActivity, "To remove item please use long tap", Toast.LENGTH_LONG)
+            .show()
     }
 
     private fun subscribeToData() {
@@ -116,14 +124,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toUltimateList() {
+        val input: TextInputEditText = findViewById(R.id.text_input_edit)
+        val button: Button = findViewById(R.id.button_add)
         viewBinding.mainRecycler.run {
             addItemDecoration(CatDecoration(context))
             itemAnimator = ultimateItemAnimator
-            layoutManager = LinearLayoutManager(context)//StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager =
+                LinearLayoutManager(context)//StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
             val adapter = UltimateAdapter()
             adapter.setListener(UltimateItemListenerImpl(adapter))
             this.adapter = adapter
+
+            button.setOnClickListener { view ->
+                if (!input.text.isNullOrEmpty()) {
+                    (this.adapter as UltimateAdapter).insertItem(
+                        0,
+                        StringItem(input.text.toString(), false)
+                    )
+                    input.setText("")
+                }
+            }
         }
     }
 }
