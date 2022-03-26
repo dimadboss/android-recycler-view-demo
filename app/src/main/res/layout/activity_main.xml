@@ -41,16 +41,21 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_edit"
-                    android:layout_width="178dp"
+                    android:layout_width="323dp"
                     android:layout_height="wrap_content"
-                    android:hint="hint" />
+                    android:layout_margin="5dp"
+                    android:hint="Enter TODO action"
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+" />
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginVertical="7dp"
+                android:text="+"
+                android:textSize="24sp" />
 
         </TableRow>
 
