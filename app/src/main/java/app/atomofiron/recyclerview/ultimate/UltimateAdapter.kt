@@ -5,8 +5,6 @@ import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import app.atomofiron.recyclerview.ultimate.api.UltimateItemListener
-import app.atomofiron.recyclerview.ultimate.data.CardItem
-import app.atomofiron.recyclerview.ultimate.data.PictureItem
 import app.atomofiron.recyclerview.ultimate.data.StringItem
 import app.atomofiron.recyclerview.ultimate.delegate.DataItemsDelegate
 import app.atomofiron.recyclerview.ultimate.delegate.DataItemsDelegateImpl
@@ -33,8 +31,6 @@ class UltimateAdapter : RecyclerView.Adapter<GenericViewHolder>(), DataItemsDele
     override fun getItemId(position: Int): Long = items[position].id
 
     override fun getItemViewType(position: Int): Int = when (items[position]) {
-        is CardItem -> UltimateViewHolderFactory.CARD.ordinal
-        is PictureItem -> UltimateViewHolderFactory.PICTURE.ordinal
         is StringItem -> UltimateViewHolderFactory.STRING.ordinal
         else -> throw Exception()
     }
