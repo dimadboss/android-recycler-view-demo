@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private val ultimateItemAnimator = UltimateItemAnimator(lifecycle)
 
     private enum class ListType {
-        /* LIST_VIEW, EASY, MEDIUM,*/ ULTIMATE,
+        ULTIMATE,
     }
 
     private var listType = ListType.ULTIMATE
@@ -46,29 +46,16 @@ class MainActivity : AppCompatActivity() {
         dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         catDecoration = CatDecoration(this)
         defaultItemAnimator = viewBinding.mainRecycler.itemAnimator!!
-        //viewModel = ViewModelProvider(this)[MainViewModel::class]
 
         setSupportActionBar(viewBinding.mainToolbar)
-        // configListVew()
+
         applyInsets()
         switchList()
-
-        subscribeToData()
-
-
-
 
         Toast.makeText(this@MainActivity, "To remove item please use long tap", Toast.LENGTH_LONG)
             .show()
     }
 
-    private fun subscribeToData() {
-        /*viewModel.viewModelScope.launch {
-            viewModel.listItems.collect { items ->
-                ultimateAdapter.setItems(items)
-            }
-        }*/
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         MenuInflater(this).inflate(R.menu.toobar, menu)
@@ -88,7 +75,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun switchList() {
         viewBinding.mainRecycler.isVisible = true
-        //viewBinding.mainList.isVisible = false
         viewBinding.mainRecycler.clearItemDecorations()
         when (listType) {
             ListType.ULTIMATE -> toUltimateList()
@@ -104,7 +90,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val recyclerView = viewBinding.mainRecycler
-        //val listView = viewBinding.mainList
         ViewCompat.setOnApplyWindowInsetsListener(viewBinding.root) { _, insets ->
             val cat = recyclerView.resources.getDimensionPixelSize(R.dimen.cat_part)
             val padding = when (listType) {
@@ -112,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             recyclerView.updatePaddingRelative(top = padding, bottom = systemBars.bottom + padding)
-            //listView.updatePaddingRelative(top = padding, bottom = systemBars.bottom + padding)
             insets
         }
     }
@@ -129,8 +113,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.mainRecycler.run {
             addItemDecoration(CatDecoration(context))
             itemAnimator = ultimateItemAnimator
-            layoutManager =
-                LinearLayoutManager(context)//StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = LinearLayoutManager(context)
 
             val adapter = UltimateAdapter()
             adapter.setListener(UltimateItemListenerImpl(adapter))
