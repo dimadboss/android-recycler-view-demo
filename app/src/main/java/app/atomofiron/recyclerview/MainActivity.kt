@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                 if (!input.text.isNullOrEmpty()) {
                     (this.adapter as UltimateAdapter).insertItem(
                         0,
-                        StringItem(input.text.toString(), false)
+                        StringItem(input.text.toString(), false, "")
                     )
                     input.setText("")
                 }

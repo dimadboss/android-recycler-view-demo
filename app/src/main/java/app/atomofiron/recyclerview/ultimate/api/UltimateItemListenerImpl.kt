@@ -11,7 +11,7 @@ class UltimateItemListenerImpl(
 
     override fun onItemClick(index: Int, item: DataItem) {
         val stringItem = item as StringItem
-        val replacement = StringItem(stringItem.string, !stringItem.checked)
+        val replacement = StringItem(stringItem.string, !stringItem.checked, stringItem.details)
         adapter.replaceItem(index, replacement)
     }
 
