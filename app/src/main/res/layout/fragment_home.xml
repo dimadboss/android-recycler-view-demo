@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/fragment_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment transaction"
+        app:layout_constraintBottom_toTopOf="@+id/cicerone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/cicerone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cicerone"
+        app:layout_constraintBottom_toTopOf="@+id/jetpack_navigation"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_transaction"
+        app:layout_constraintStart_toStartOf="@+id/fragment_transaction"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_transaction" />
+
+    <Button
+        android:id="@+id/jetpack_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Jetpack Navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cicerone"
+        app:layout_constraintStart_toStartOf="@+id/cicerone"
+        app:layout_constraintTop_toBottomOf="@+id/cicerone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

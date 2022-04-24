@@ -23,6 +23,19 @@ import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_container)
+
+        /** Показываем наш базовый фрагмент */
+        supportFragmentManager.addFragment(
+            container = R.id.fragment_container,
+            fragment = HomeFragment.newInstance()
+        )
+    }
+
+    /*
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var dividerItemDecoration: RecyclerView.ItemDecoration
     private lateinit var catDecoration: RecyclerView.ItemDecoration
@@ -129,5 +142,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 }
